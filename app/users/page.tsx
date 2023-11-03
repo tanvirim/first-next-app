@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import UserTable from './userTable';
 
@@ -9,7 +9,10 @@ const UsersPage = ({ searchParams: { sortOrder } }: Props) => {
   return (
     <div>
       <div>users</div>
-      <UserTable sortOrder={sortOrder} />
+
+      <Suspense fallback={<p> Loading...</p>}>
+        <UserTable sortOrder={sortOrder} />
+      </Suspense>
     </div>
   );
 };
